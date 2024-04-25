@@ -24,12 +24,13 @@ try {
   console.log(changeEnough([10, 0, 0, 50], 3.85)); // false
   console.log(changeEnough([1, 0, 5, 219], 19.99)); // false
 
+  console.log(changeEnough([-1, 0, 5, 219], 19.99)); // error
+
   console.log(changeEnough(1, 0, 5, 219, 19.99)); // error
   console.log(changeEnough([1.5, 0, 5, 219], 19.99)); // error
   console.log(changeEnough([1, 0, 5, 219], -19.99)); // error
   console.log(changeEnough([1, 0, 5, 219], 'S')); // error
-  console.log(changeEnough([-1, 0, 5, 219], 19.99)); // error
-
+  
 } catch (error) {
   console.error(error.message);
 }
