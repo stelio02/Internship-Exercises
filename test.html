@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results</title>
+    <style>
+        .test-passed {
+            color: green;
+        }
+        .test-failed {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="testResults"></div>
+    <script>
+        function runTests() {
+            const testCases = [
+                { change: [2, 100, 0, 0], totalDue: 14.11, expected: false },
+                { change: [0, 0, 20, 5], totalDue: 0.75, expected: true },
+                { change: [30, 40, 20, 5], totalDue: 12.55, expected: true },
+                { change: [10, 0, 0, 50], totalDue: 3.85, expected: false },
+                { change: [1, 0, 5, 219], totalDue: 19.99, expected: false }
+            ];
+
+            const testResultsDiv = document.getElementById("testResults");
+            let resultsHTML = "";
+
+            testCases.forEach((testCase, index) => {
+                try {
+                    const result = changeEnough(testCase.change, testCase.totalDue);
+                    const testResult = result === testCase.expected ? 'Passed' : 'Failed';
+                    const testClass = result === testCase.expected ? 'test-passed' : 'test-failed';
+                    resultsHTML += `<div class="${testClass}">Test ${index + 1}: ${testResult}</div>`;
+                } catch (error) {
+                    resultsHTML += `<div class="test-failed">Test ${index + 1} threw an error: ${error.message}</div>`;
+                }
+            });
+
+            testResultsDiv.innerHTML = resultsHTML;
+        }
+
+        function changeEnough(change, totalDue) {
+            if (!Array.isArray(change) || change.length !== 4 || !change.every(Number.isInteger) || totalDue <= 0 || typeof totalDue !== 'number') {
+                throw new Error('Invalid input');
+            }
+
+            const conversionRates = [0.25, 0.1, 0.05, 0.01];
+
+            const totalChange = change.reduce((acc, numCoins, index) => {
+                if (numCoins < 0) {
+                    throw new Error('Invalid input: Number of coins cannot be negative');
+                }
+                return acc + numCoins * conversionRates[index];
+            }, 0);
+
+            return totalChange >= totalDue;
+        }
+
+        runTests();
+    </script>
+</body>
+</html>
