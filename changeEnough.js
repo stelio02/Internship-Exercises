@@ -55,7 +55,7 @@ assert.strictEqual(changeEnough([30, 40, 20, 5], 12.55), true);
 assert.strictEqual(changeEnough([10, 0, 0, 50], 3.85), false);
 assert.strictEqual(changeEnough([1, 0, 5, 219], 19.99), false);
 
-assert.strictEqual(changeEnough(1, 0, 5, 219, 19.99), true);
+//assert.strictEqual(changeEnough(1, 0, 5, 219, 19.99), true);
 
 
 
