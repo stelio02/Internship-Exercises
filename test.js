@@ -1,30 +1,46 @@
-function boilWater(callback) {
+function putWater(callback){
     console.log("Putting water to boil for pasta...");
-    console.log("Watching TV while waiting for water to boil...");
-    setTimeout(() => {
+    watchTV(); 
+    setTimeout(()=> {
         console.log("Water is boiling!");
         callback();
-    }, 3000); 
+    }, 2000);
 }
 
-function cookPasta(callback) {
+function watchTV(){
+    setTimeout(()=>{
+        console.log("Watching TV while waiting for water to boil...");
+    },1000);
+    
+}
+
+function cookPasta(callback){
     console.log("Pouring pasta into boiling water...");
-    console.log("Making sauce...");
+    makeSauce();
     setTimeout(() => {
-        console.log("Sauce is ready!");
-    }, 4000);
-    setTimeout(() => {
-        console.log("Pasta is ready!");
+        console.log("Pasta is ready!")
         callback();
-    }, 4000);
+    },4000);
+
 }
 
-function eat() {
+function makeSauce(){
+    setTimeout(() => {
+        console.log("Making sauce...")
+    },500);
+
+    setTimeout(() => {
+        console.log("Sauce is ready!")
+    },4000);
+    
+}
+
+function eatPasta(){
     console.log("Eating delicious pasta with sauce while watching TV.");
 }
 
-boilWater(() => {
-        cookPasta(() => {
-                eat();
-            });
-        });
+putWater(()=>{
+    cookPasta(() =>{
+        eatPasta();
+    });
+});
