@@ -1,50 +1,53 @@
-function putWater(callback){
+
+function putWater() {
     console.log("Putting water to boil for pasta...");
-    watchTV(); 
-    setTimeout(()=> {
-        console.log("Water is boiling!");
-        callback();
-    }, 2000);
+    watchTV();
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Water is boiling!");
+            resolve();
+        }, 2000);
+    });
 }
 
-function watchTV(){
-    setTimeout(()=>{
+function watchTV() {
+    setTimeout(() => {
         console.log("Watching TV while waiting for water to boil...");
-    },1000);
-    
+    }, 1000);
 }
 
-function cookPasta(callback){
+function cookPasta() {
     console.log("Pouring pasta into boiling water...");
-    makeSauce();
-    setTimeout(() => {
-        console.log("Pasta is ready!")
-        callback();
-    },4000);
-
+    return new Promise((resolve, reject) => {
+        makeSauce().then(() => {
+            setTimeout(() => {
+                console.log("Pasta is ready!")
+                resolve();
+            }, 4000);
+        });
+    });
 }
 
-function makeSauce(){
-    setTimeout(() => {
-        console.log("Making sauce...")
-    },500);
+function makeSauce() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Making sauce...")
+        }, 500);
 
-    setTimeout(() => {
-        console.log("Sauce is ready!")
-    },4000);
-    
+        setTimeout(() => {
+            console.log("Sauce is ready!")
+            resolve();
+        }, 4000);
+    });
 }
 
-function eatPasta(){
+function eatPasta() {
     console.log("Eating delicious pasta with sauce while watching TV.");
 }
 
-putWater(()=>{
-    cookPasta(() =>{
-        eatPasta();
-    });
-    
-});
+putWater()
+    .then(() => cookPasta())
+    .then(() => eatPasta());
 
 
 
