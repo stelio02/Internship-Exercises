@@ -1,35 +1,3 @@
-/*
-function putWater(){
-    console.log("Vura ujin");
-    setTimeout(()=>
-console.log("U zie uji"),
-2000)
-}
-
-function watchTV(){
-    console.log("Pash TV");
-}
-
-function boilPasta(){
-    console.log("Vura makaronat");
-}
-
-function eatPasta(){
-    console.log("Hengra");
-}
-
-function main (){
-
-putWater();
-watchTV();
-boilPasta();
-eatPasta();
-
-}
-
-main();
-*/
-
 // Simulated asynchronous functions to simulate boiling water, cooking pasta, making sauce, and eating
 function boilWater(callback) {
     console.log("Putting water to boil for pasta...");
@@ -59,16 +27,10 @@ function makeSauce(callback) {
 }
 
 function eat() {
-    boilWater(() => {
-        cookPasta(() => {
-            makeSauce();
-        });
-    });
     console.log("Eating delicious pasta with sauce while watching TV.");
 }
-eat();
 
-/* Starting the process
+// Starting the process
 boilWater(() => {
     cookPasta(() => {
         makeSauce(() => {
@@ -76,4 +38,3 @@ boilWater(() => {
         });
     });
 });
-*/
