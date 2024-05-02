@@ -1,8 +1,7 @@
-
 function putWater() {
-    console.log("Putting water to boil for pasta...");
-    watchTV();
     return new Promise((resolve, reject) => {
+        console.log("Putting water to boil for pasta...");
+        watchTV();
         setTimeout(() => {
             console.log("Water is boiling!");
             resolve();
@@ -17,14 +16,13 @@ function watchTV() {
 }
 
 function cookPasta() {
-    console.log("Pouring pasta into boiling water...");
     return new Promise((resolve, reject) => {
-        makeSauce().then(() => {
-            setTimeout(() => {
-                console.log("Pasta is ready!")
-                resolve();
-            }, 4000);
-        });
+        console.log("Pouring pasta into boiling water...");
+        makeSauce();
+        setTimeout(() => {
+            console.log("Pasta is ready!")
+            resolve();
+        }, 4000);
     });
 }
 
@@ -32,11 +30,11 @@ function makeSauce() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("Making sauce...")
+            resolve();
         }, 500);
 
         setTimeout(() => {
             console.log("Sauce is ready!")
-            resolve();
         }, 4000);
     });
 }
@@ -45,12 +43,16 @@ function eatPasta() {
     console.log("Eating delicious pasta with sauce while watching TV.");
 }
 
-putWater()
-    .then(() => cookPasta())
-    .then(() => eatPasta())
-    .catch((error)=>{
-        console.log("Something went wrong.");
-    });
+function main() {
+    putWater()
+        .then(() => cookPasta())
+        .then(() => eatPasta())
+        .catch((error) => {
+            console.error('An error occurred:', error);
+        });
+}
+
+main();
 
 
 
