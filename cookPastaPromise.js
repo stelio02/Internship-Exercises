@@ -47,7 +47,10 @@ function eatPasta() {
 
 putWater()
     .then(() => cookPasta())
-    .then(() => eatPasta());
+    .then(() => eatPasta())
+    .catch((error)=>{
+        console.log("Something went wrong.");
+    });
 
 
 
