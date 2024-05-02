@@ -39,8 +39,20 @@ function eatPasta(){
     console.log("Eating delicious pasta with sauce while watching TV.");
 }
 
+function main(){
+    putWater(()=>{
+        cookPasta(() =>{
+            eatPasta();
+        });
+    });
+}
+
+main();
+
+/*
 putWater(()=>{
     cookPasta(() =>{
         eatPasta();
     });
 });
+*/
