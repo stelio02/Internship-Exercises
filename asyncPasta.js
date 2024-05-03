@@ -1,12 +1,3 @@
-function watchTV() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log("Watching TV while waiting for water to boil...");
-            resolve();
-        }, 1000);
-    });
-}
-
 async function putWater() {
     console.log("Putting water to boil for pasta...");
     await watchTV();
@@ -16,17 +7,16 @@ async function putWater() {
             resolve();
         }, 2000);
     });
-}
+};
 
-async function makeSauce() {
-    console.log("Making sauce...");
-    await new Promise((resolve) => {
+function watchTV() {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("Sauce is ready!")
+            console.log("Watching TV while waiting for water to boil...");
             resolve();
-        }, 500);
+        }, 1000);
     });
-}
+};
 
 async function cookPasta() {
     console.log("Pouring pasta into boiling water...");
@@ -37,11 +27,21 @@ async function cookPasta() {
             resolve();
         }, 4000);
     });
-}
+};
+
+async function makeSauce() {
+    console.log("Making sauce...");
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("Sauce is ready!")
+            resolve();
+        }, 4000);
+    });
+};
 
 function eatPasta() {
     console.log("Eating delicious pasta with sauce while watching TV.");
-}
+};
 
 async function main() {
     try {
@@ -51,6 +51,6 @@ async function main() {
     } catch (error) {
         console.error('An error occurred:', error);
     }
-}
+};
 
 main();
