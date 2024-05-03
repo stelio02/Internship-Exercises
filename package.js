@@ -9,7 +9,7 @@ function orderPackage() {
         }
       }, 2000); 
     });
-  }
+  };
   
   function dispatchPackage() {
     return new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ function orderPackage() {
         }
       }, 2000); 
     });
-  }
+  };
   
   function receivePackage() {
     return new Promise((resolve, reject) => {
@@ -35,7 +35,7 @@ function orderPackage() {
         }
       }, 3000); 
     });
-  }
+  };
   
   orderPackage()
     .then((result) => {
