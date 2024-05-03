@@ -1,7 +1,7 @@
 function orderPackage() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const isSuccessful = Math.random() < 0.9; 
+        const isSuccessful = Math.random() < 0.95; 
         if (isSuccessful) {
           resolve("Package ordered successfully");
         } else {
