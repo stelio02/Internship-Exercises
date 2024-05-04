@@ -1,18 +1,14 @@
 function putWater(callback){
     console.log("Putting water to boil for pasta...");
-    watchTV(); 
     setTimeout(()=> {
         console.log("Water is boiling!");
         callback();
     }, 2000);
-}
+};
 
 function watchTV(){
-    setTimeout(()=>{
         console.log("Watching TV while waiting for water to boil...");
-    },1000);
-    
-}
+};
 
 function cookPasta(callback){
     console.log("Pouring pasta into boiling water...");
@@ -22,7 +18,7 @@ function cookPasta(callback){
         callback();
     },4000);
 
-}
+};
 
 function makeSauce(){
     setTimeout(() => {
@@ -41,10 +37,12 @@ function eatPasta(){
 
 function main(){
     putWater(()=>{
+        
         cookPasta(() =>{
             eatPasta();
         });
     });
+    watchTV();
 }
 
 main();
