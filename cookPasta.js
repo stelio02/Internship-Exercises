@@ -12,7 +12,6 @@ function watchTV(){
 
 function cookPasta(callback){
     console.log("Pouring pasta into boiling water...");
-    makeSauce();
     setTimeout(() => {
         console.log("Pasta is ready!")
         callback();
@@ -21,10 +20,7 @@ function cookPasta(callback){
 };
 
 function makeSauce(){
-    setTimeout(() => {
         console.log("Making sauce...")
-    },500);
-
     setTimeout(() => {
         console.log("Sauce is ready!")
     },4000);
@@ -39,6 +35,9 @@ function main(){
     putWater(()=>{
         
         cookPasta(() =>{
+            
+        });
+        makeSauce(() =>{
             eatPasta();
         });
     });
