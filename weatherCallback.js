@@ -1,9 +1,7 @@
-const weatherValues = [
-  (italyWeather = 30),
-  (albaniaWeather = 25),
-  (greeceWeather = 27),
-  (germanyWeather = 21),
-];
+const italyWeather = { temperature: 30 };
+const albaniaWeather = { temperature: 25 };
+const greeceWeather = { temperature: 27 };
+const germanyWeather = { temperature: 21 };
 
 function getWeatherFromSource1(callback) {
   setTimeout(() => {
@@ -14,30 +12,58 @@ function getWeatherFromSource1(callback) {
 function getWeatherFromSource2(callback) {
   setTimeout(() => {
     callback(albaniaWeather);
-  }, 1000);
+  }, 1500);
 }
 
 function getWeatherFromSource3(callback) {
   setTimeout(() => {
     callback(greeceWeather);
-  }, 1000);
+  }, 2000);
 }
 
 function getWeatherFromSource4(callback) {
   setTimeout(() => {
     callback(germanyWeather);
-  }, 1000);
+  }, 2500);
 }
 
 function getAllWeatherData() {
-  getWeatherFromSource1();
-  getWeatherFromSource2();
-  getWeatherFromSource3();
-  getWeatherFromSource4();
+  let weatherData = [];
 
-  const sum = weatherValues.reduce((a, b) => a + b, 0);
-  const averageTemperature = sum / weatherValues.length;
-  console.log(`Average temperature: ${averageTemperature}°C`);
+  getWeatherFromSource1((italyWeather) => {
+    weatherData.push(italyWeather);
+    checkLength();
+  });
+
+  getWeatherFromSource2((albaniaWeather) => {
+    weatherData.push(albaniaWeather);
+    checkLength();
+  });
+
+  getWeatherFromSource3((greeceWeather) => {
+    weatherData.push(greeceWeather);
+    checkLength();
+  });
+
+  getWeatherFromSource4((germanyWeather) => {
+    weatherData.push(germanyWeather);
+    checkLength();
+  });
+
+  function checkLength() {
+    if (weatherData.length === 4) {
+      calculateAverageTemperature(weatherData);
+    }
+  }
+
+  function calculateAverageTemperature(weatherData) {
+    let sum = 0;
+    for (let i = 0; i < weatherData.length; i++) {
+      sum = sum + weatherData[i].temperature;
+    }
+    let averageTemperature = sum / weatherData.length;
+    console.log(`Average temperature: ${averageTemperature}°C`);
+  }
 }
 
 getAllWeatherData();
