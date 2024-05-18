@@ -31,8 +31,7 @@ function main() {
   fetchUserData((users) => {
     users.forEach((user) => {
       fetchUserPosts(user.id, (posts) => {
-        const result = processUserDataAndPosts(user, posts);
-        console.log(result);
+        console.log(processUserDataAndPosts(user, posts));
       });
     });
   });
