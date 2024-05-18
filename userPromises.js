@@ -37,8 +37,7 @@ function main() {
       users.forEach((user) => {
         fetchUserPosts(user.id)
           .then((posts) => {
-            const result = processUserDataAndPosts(user, posts);
-            console.log(result);
+            console.log(processUserDataAndPosts(user, posts));
           })
           .catch((error) => {
             console.error(`Error fetching posts for user ${user.id}:`, error);
